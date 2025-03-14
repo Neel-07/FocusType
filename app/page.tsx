@@ -25,24 +25,26 @@ export default function Home() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <KeyboardIcon className="h-8 w-8 text-primary" />
-              <span className="ml-2 text-xl font-bold">FocusType</span>
+              <span onClick={() => {
+                    router.push(`/`);
+                  }} className="ml-2 text-xl font-bold">FocusType</span>
             </div>
             <div className="flex items-center gap-4">
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.open('https://twitter.com/intent/tweet?text=Check%20out%20FocusType%20-%20Master%20typing%20one%20word%20at%20a%20time!%20&url=https://focustype.com', '_blank')}
+                onClick={() => window.open('https://github.com/Neel-07/FocusType', '_blank')}
               >
                 <StarIcon className="h-4 w-4 mr-2" />
-                Give us a star
+                Give a star on Github
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => window.open('https://twitter.com/focustype', '_blank')}
+                onClick={() => window.open('https://twitter.com/intent/follow?screen_name=neel_m7')}
               >
                 <TwitterIcon className="h-4 w-4 mr-2" />
-                Follow us
+                Follow Me on Twitter
               </Button>
               <Button
                 variant="ghost"
