@@ -4,19 +4,18 @@ import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowLeft, RefreshCw, Keyboard } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const QWERTY_LAYOUT = [
   ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
   ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
   ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
-  ['SPACE']
+  ['SPACE'],
 ];
 
 export default function PracticePage() {
-  const searchParams = useSearchParams();
-  const initialWord = searchParams.get('word') || 'example';
-  const [targetWord, setTargetWord] = useState(initialWord);
+  const router = useRouter();
+  const [targetWord, setTargetWord] = useState('example');
   const [currentInput, setCurrentInput] = useState('');
   const [typedHistory, setTypedHistory] = useState<string[]>([]);
   const [waitingForSpace, setWaitingForSpace] = useState(false);
@@ -31,7 +30,12 @@ export default function PracticePage() {
   >([]);
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const word = params.get('word') || 'example';
+    setTargetWord(word);
+  }, []);
 
   useEffect(() => {
     setCharacters(
@@ -78,7 +82,7 @@ export default function PracticePage() {
           : input[index] === char
           ? 'correct'
           : 'incorrect',
-    })) as { char: string; status: "correct" | "neutral" | "incorrect" }[];;
+    })) as { char: string; status: "correct" | "neutral" | "incorrect" }[];
 
     setCharacters(newCharacters);
 
@@ -194,21 +198,6 @@ export default function PracticePage() {
                 ))}
               </div>
             ))}
-          </div>
-
-          <div className="grid grid-cols-3 gap-4 text-center mb-6">
-            <div>
-              <div className="text-2xl font-bold">{stats.attempts}</div>
-              <div className="text-sm text-muted-foreground">Attempts</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold">{accuracy}%</div>
-              <div className="text-sm text-muted-foreground">Accuracy</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold">{stats.wpm}</div>
-              <div className="text-sm text-muted-foreground">WPM</div>
-            </div>
           </div>
 
           <div className="flex justify-center">
