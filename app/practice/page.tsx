@@ -200,6 +200,21 @@ export default function PracticePage() {
             ))}
           </div>
 
+          <div className="grid grid-cols-3 gap-4 text-center mb-6">
+            <div>
+              <div className="text-2xl font-bold">{stats.attempts}</div>
+              <div className="text-sm text-muted-foreground">Attempts</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold">{accuracy}%</div>
+              <div className="text-sm text-muted-foreground">Accuracy</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold">{stats.wpm}</div>
+              <div className="text-sm text-muted-foreground">WPM</div>
+            </div>
+          </div>
+
           <div className="flex justify-center">
             <Button
               variant="outline"
