@@ -78,7 +78,7 @@ export default function PracticePage() {
           : input[index] === char
           ? 'correct'
           : 'incorrect',
-    }));
+    })) as { char: string; status: "correct" | "neutral" | "incorrect" }[];;
 
     setCharacters(newCharacters);
 
