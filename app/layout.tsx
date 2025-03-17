@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'FocusType - Word Mastery Practice',
   description: 'Master typing one word at a time with FocusType',
+  icons: {
+    icon: "/favicon.ico", 
+  }
 };
 
 export default function RootLayout({
