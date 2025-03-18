@@ -377,7 +377,7 @@ export default function Home() {
 
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="item-1">
-              <AccordionTrigger>
+              <AccordionTrigger className="text-left">
                 How is FocusType different from other typing tools?
               </AccordionTrigger>
               <AccordionContent>
@@ -430,7 +430,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gray-200">
+      <section className="py-16 bg-primary/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -490,7 +490,7 @@ export default function Home() {
                 </a>
               </p>
 
-              <div className="flex space-x-4 ml-7">
+              <div className="flex space-x-3 ml-7">
                 <Button
                   variant="ghost"
                   size="icon"
